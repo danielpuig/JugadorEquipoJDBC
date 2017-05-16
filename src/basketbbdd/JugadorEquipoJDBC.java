@@ -41,12 +41,36 @@ public class JugadorEquipoJDBC {
         try {
             System.out.println("Insertando Equipo Stucom...");
             basketJDBC.insertarEquipo(stucom);
-            System.out.println("Insertado!");
+            System.out.println("Insertado Correctamente");
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }
         
+        try {
+            System.out.println("Insertando Equipo Ingens...");
+            basketJDBC.insertarEquipo(ingens);
+            System.out.println("Insertado Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
         
-
+        try {
+            System.out.println("Insertando jugador Dani...");
+            basketJDBC.insertarJugador(dani);
+            System.out.println("Insertado Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        
+        try {
+            System.out.println("Insertando resto de jugadores(xavi/kobe/lebron)...");
+            basketJDBC.insertarJugador(xavi);
+            basketJDBC.insertarJugador(kobe);
+            basketJDBC.insertarJugador(lebron);
+            System.out.println("Insertados!");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        
     }
 }
