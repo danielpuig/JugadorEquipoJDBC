@@ -143,6 +143,16 @@ public class BasketJDBC {
         return listaJugadores;
     }
     
+    public ArrayList<Jugador> obtenerJugadoresPorPosicionIgual(String pos) throws SQLException {
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        String query = "select * from player where position = ?";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, pos);
+        ResultSet rs = st.executeQuery();
+        listaJugadores = buscarJugadores(rs);
+        return listaJugadores;
+    }
+    
     public ArrayList<Jugador> buscarJugadores(ResultSet rs) throws SQLException{
         ArrayList<Jugador> listaJugadores = new ArrayList<>();
         while (rs.next()) {

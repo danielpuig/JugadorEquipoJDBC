@@ -137,6 +137,15 @@ public class JugadorEquipoJDBC {
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }
+        //Act10
+        try {
+            System.out.println("Listado de jugadores con posicion alero..");
+
+            System.out.println(basketJDBC.obtenerJugadoresPorPosicionIgual("alero"));
+            System.out.println("Datos Obtenidos Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
         
     }
 }
