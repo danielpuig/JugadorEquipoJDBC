@@ -94,4 +94,21 @@ public class BasketJDBC {
         return jugador;
     }
     
+    public void modificarEquipo(Jugador jugador, Equipo equipo) throws SQLException {
+        String insert = "update player set team=? where name = ?;";
+        PreparedStatement ps = conexion.prepareStatement(insert);
+        ps.setString(1, equipo.getNombre());
+        ps.setString(2, jugador.getNombre());
+        ps.executeUpdate();
+        ps.close();
+    }
+    
+    public void borrarJugador(Jugador jugador) throws SQLException {
+        String insert = "delete from player where name = ?;";
+        PreparedStatement ps = conexion.prepareStatement(insert);
+        ps.setString(1, jugador.getNombre());
+        ps.executeUpdate();
+        ps.close();
+    }
+    
 }

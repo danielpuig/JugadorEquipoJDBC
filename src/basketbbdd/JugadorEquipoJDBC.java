@@ -84,6 +84,22 @@ public class JugadorEquipoJDBC {
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }
-        
+        //Act4
+        try {
+            System.out.println("Modificando equipo de Dani de Stucom a Ingens...");
+            System.out.println("Acutales datos: " + dani);
+            basketJDBC.modificarEquipo(dani, ingens);
+            System.out.println("Datos actualizados: " + basketJDBC.obtenerJugadorPorNombre("Dani"));
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        //Act5
+        try {
+            System.out.println("Borrando jugador Lebron...");
+            basketJDBC.borrarJugador(lebron);
+            System.out.println("Borrado Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
     }
 }
