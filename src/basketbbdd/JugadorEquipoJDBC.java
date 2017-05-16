@@ -37,7 +37,7 @@ public class JugadorEquipoJDBC {
         } catch (SQLException ex) {
             System.out.println("Error al conectar con BBDD" + ex);
         }
-        
+        //Act1
         try {
             System.out.println("Insertando Equipo Stucom...");
             basketJDBC.insertarEquipo(stucom);
@@ -53,7 +53,7 @@ public class JugadorEquipoJDBC {
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }
-        
+        //Act2
         try {
             System.out.println("Insertando jugador Dani...");
             basketJDBC.insertarJugador(dani);
@@ -67,7 +67,20 @@ public class JugadorEquipoJDBC {
             basketJDBC.insertarJugador(xavi);
             basketJDBC.insertarJugador(kobe);
             basketJDBC.insertarJugador(lebron);
-            System.out.println("Insertados!");
+            System.out.println("Insertados Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        //Act3
+        try {
+            System.out.println("Modificando canastas de Dani...");
+            System.out.println("Acutales datos: " + dani);
+            dani.setAsistencias(40);
+            dani.setCanastas(50);
+            dani.setRebotes(45);
+            basketJDBC.modificarCanastasAsistenciasRebotes(dani);
+
+            System.out.println("Datos actualizados: " + basketJDBC.obtenerJugadorPorNombre("Dani"));
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }

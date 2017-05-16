@@ -15,7 +15,8 @@ public class Equipo {
     private String localidad;
     private LocalDate fechaCreacion;
 
-    public Equipo() {
+    public Equipo(String nombre) {
+        this.nombre = nombre;
     }
 
     public Equipo(String nombre, String localidad, LocalDate fechaCreacion) {
