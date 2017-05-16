@@ -6,6 +6,7 @@
 package persistence;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.Equipo;
@@ -21,6 +22,19 @@ public class BasketJDBC {
     private Connection conexion;
 
     public BasketJDBC() {
+    }
+    
+    public void conectar() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/basket";
+        String usr = "root";
+        String pass = "";
+        conexion = DriverManager.getConnection(url, usr, pass);
+    }
+
+    public void desconectar() throws SQLException {
+        if (conexion != null) {
+            conexion.close();
+        }
     }
     
     public void insertarEquipo(Equipo e) throws SQLException {
