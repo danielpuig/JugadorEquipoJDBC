@@ -101,5 +101,24 @@ public class JugadorEquipoJDBC {
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }
+        //Act6
+        try {
+            System.out.println("Obtener datos de jugador por nombre 'kobe'...");
+
+            System.out.println(basketJDBC.obtenerJugadorPorNombre("kobe"));
+            System.out.println("Datos Obtenidos Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        //Act7
+        try {
+            System.out.println("Obtener datos de jugador que contengan 'dani' en su nombre...");
+
+            System.out.println(basketJDBC.obtenerJugadoresNombreLike("dani"));
+            System.out.println("Datos Obtenidos Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        
     }
 }

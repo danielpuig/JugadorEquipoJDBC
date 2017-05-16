@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Equipo;
 import model.Jugador;
 
@@ -109,6 +110,30 @@ public class BasketJDBC {
         ps.setString(1, jugador.getNombre());
         ps.executeUpdate();
         ps.close();
+    }
+    
+    public ArrayList<Jugador> obtenerJugadoresNombreLike(String nombre) throws SQLException {
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        String query = "select * from player where name like ?";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setString(1, "%"+nombre+"%");
+        ResultSet rs = st.executeQuery();
+        listaJugadores = buscarJugadores(rs);
+        return listaJugadores;
+    }
+    
+    public ArrayList<Jugador> buscarJugadores(ResultSet rs) throws SQLException{
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        while (rs.next()) {
+            Equipo equipo = new Equipo(rs.getString("team"));
+            Jugador jugador = new Jugador(
+                    rs.getString("name"), rs.getDate("birth").toLocalDate(),
+                    rs.getInt("nbaskets"), rs.getInt("nassists"), rs.getInt("nrebounds"),
+                    rs.getString("position"), equipo
+            );
+            listaJugadores.add(jugador);
+        }
+        return listaJugadores;
     }
     
 }
