@@ -119,6 +119,24 @@ public class JugadorEquipoJDBC {
         } catch (SQLException ex) {
             System.out.println("Error " + ex);
         }
+        //Act8
+        try {
+            System.out.println("Obteniendo jugador con canastas mayor o igual a 30..");
+
+            System.out.println(basketJDBC.obtenerJugadoresPorCanastasMayorIgual(30));
+            System.out.println("Datos Obtenidos Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
+        //Act9
+        try {
+            System.out.println("Obteniendo jugador con asistencias entre 25 y 30..");
+
+            System.out.println(basketJDBC.obtenerJugadoresPorAsistenciasEntre(25, 30));
+            System.out.println("Datos Obtenidos Correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex);
+        }
         
     }
 }

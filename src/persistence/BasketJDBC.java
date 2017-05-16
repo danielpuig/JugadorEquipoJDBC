@@ -122,6 +122,27 @@ public class BasketJDBC {
         return listaJugadores;
     }
     
+    public ArrayList<Jugador> obtenerJugadoresPorCanastasMayorIgual(int canastas) throws SQLException {
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        String query = "select * from player where nbaskets >= ?";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setInt(1, canastas);
+        ResultSet rs = st.executeQuery();
+        listaJugadores = buscarJugadores(rs);
+        return listaJugadores;
+    }
+    
+    public ArrayList<Jugador> obtenerJugadoresPorAsistenciasEntre(int asisMin,int asisMax) throws SQLException {
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        String query = "select * from player where nassists between ? and ?";
+        PreparedStatement st = conexion.prepareStatement(query);
+        st.setInt(1, asisMin);
+        st.setInt(2, asisMax);
+        ResultSet rs = st.executeQuery();
+        listaJugadores = buscarJugadores(rs);
+        return listaJugadores;
+    }
+    
     public ArrayList<Jugador> buscarJugadores(ResultSet rs) throws SQLException{
         ArrayList<Jugador> listaJugadores = new ArrayList<>();
         while (rs.next()) {
